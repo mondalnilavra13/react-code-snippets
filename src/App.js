@@ -87,7 +87,7 @@ function App() {
 
 export default App;
 */
-
+/*
 import { useState } from "react";
 import React from "react"
 
@@ -132,3 +132,25 @@ function App() {
 }
 
 export default App;
+*/
+import React, { useState } from 'react';
+
+function GreetingArray() {
+  const [greetings, setGreetings] = useState(['Hello', 'Hi', 'Hey']);
+
+  const [currentGreeting, setCurrentGreeting] = useState(greetings[0]);
+
+  const handleClick = () => {
+    const index = greetings.indexOf(currentGreeting);
+    setCurrentGreeting(greetings[(index + 1) % greetings.length]);
+  };
+
+  return (
+    <div>
+      <h1>{currentGreeting} World!</h1>
+      <button onClick={handleClick}>Next Greeting</button>
+    </div>
+  );
+}
+
+export default GreetingArray;
