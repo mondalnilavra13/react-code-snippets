@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 
 function App() {
   const [number, setNumber] = useState(0);
@@ -38,7 +38,7 @@ function App() {
 
 export default App;
 
-
+*/
 ///
 /*
 import React, { useState } from 'react';
@@ -87,3 +87,48 @@ function App() {
 
 export default App;
 */
+
+import { useState } from "react";
+import React from "react"
+
+function App() {
+  const [logs, setLogs] = useState([]);
+
+  const handleMouseOver = () => {
+    const newLog = { time: new Date().toLocaleString(), eventName: "in" };
+    setLogs((prevLogs) => [...prevLogs, newLog]);
+  };
+
+  const handleMouseOut = () => {
+    const newLog = { time: new Date().toLocaleString(), eventName: "out" };
+    setLogs((prevLogs) => [...prevLogs, newLog]);
+  };
+
+  return (
+    <div>
+      <h1 onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        This is heading 1
+      </h1>
+      <h2>This is heading 2</h2>
+      <div>This is a div</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Event Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {logs.map((log, index) => (
+            <tr key={index}>
+              <td>{log.time}</td>
+              <td>{log.eventName}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default App;
