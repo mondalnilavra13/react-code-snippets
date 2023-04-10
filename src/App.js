@@ -1,4 +1,4 @@
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   const [number, setNumber] = useState(0);
@@ -38,7 +38,7 @@ function App() {
 
 export default App;
 
-*/
+
 ///
 /*
 import React, { useState } from 'react';
@@ -133,6 +133,7 @@ function App() {
 
 export default App;
 */
+/*
 import React, { useState } from 'react';
 
 function GreetingArray() {
@@ -154,3 +155,4 @@ function GreetingArray() {
 }
 
 export default GreetingArray;
+*/
