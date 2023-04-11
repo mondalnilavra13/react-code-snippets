@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/*import React, { useState } from 'react';
 
 function App() {
   const [number, setNumber] = useState(0);
@@ -37,7 +37,7 @@ function App() {
 }
 
 export default App;
-
+*/
 
 ///
 /*
@@ -156,3 +156,45 @@ function GreetingArray() {
 
 export default GreetingArray;
 */
+
+
+import React, { useState } from 'react';
+
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [items, setItems] = useState([]);
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  const handleAddItem = () => {
+    if (inputText.trim() !== '') {
+      setItems([...items, inputText]);
+      setInputText('');
+    }
+  };
+
+  return (
+    <div>
+      <div style={{ float: 'left', marginRight: '20px' }}>
+        <input
+          type="text"
+          placeholder="Enter text"
+          value={inputText}
+          onChange={handleInputChange}
+        />
+        <button onClick={handleAddItem}>Add Item</button>
+      </div>
+      <div style={{ float: 'left' }}>
+        <ul>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default App;
