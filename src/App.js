@@ -157,7 +157,7 @@ function GreetingArray() {
 export default GreetingArray;
 */
 
-
+/*
 import React, { useState } from 'react';
 
 const App = () => {
@@ -190,6 +190,69 @@ const App = () => {
         <ul>
           {items.map((item, index) => (
             <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+*/
+import React, { useState } from 'react';
+
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [items, setItems] = useState([]);
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  const handleAddItem = () => {
+    if (inputText.trim() !== '') {
+      setItems([...items, { id: new Date().getTime(), text: inputText }]);
+      setInputText('');
+    }
+  };
+
+  const handleDeleteItem = (itemId) => {
+    setItems(items.filter(item => item.id !== itemId));
+  };
+
+  const handleUpdateItem = (itemId, updatedText) => {
+    setItems(items.map(item => {
+      if (item.id === itemId) {
+        return { ...item, text: updatedText };
+      }
+      return item;
+    }));
+  };
+
+  return (
+    <div>
+      <div style={{ float: 'left', marginRight: '20px' }}>
+        <input
+          type="text"
+          placeholder="Enter text"
+          value={inputText}
+          onChange={handleInputChange}
+        />
+        <button onClick={handleAddItem}>Add</button>
+      </div>
+      <div style={{ float: 'left' }}>
+        <ul>
+          {items.map((item) => (
+            <li key={item.id}>
+              {item.text}
+              <button onClick={() => handleDeleteItem(item.id)}>Delete</button>
+              <input
+                type="text"
+                defaultValue={item.text}
+                onChange={(event) => handleUpdateItem(item.id, event.target.value)}
+              />
+              <button onClick={() => handleUpdateItem(item.id, item.text)}>Update</button>
+            </li>
           ))}
         </ul>
       </div>
